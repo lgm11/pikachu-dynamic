@@ -117,35 +117,74 @@ parcelRequire = (function (modules, cache, entry, globalName) {
   }
 
   return newRequire;
-})({"main.js":[function(require,module,exports) {
-var music = function music() {
-  var audio = document.getElementById('music');
-  audio.play();
-};
+})({"C:/Users/Lee/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
 
-var Div = document.getElementById('mouth');
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
 
-Div.onclick = function () {
-  music();
-};
+  return bundleURL;
+}
 
-var string = "\n* {\n    box-sizing: border-box;\n  }\n  *::after,\n  *::before {\n    box-sizing: border-box;\n  }\n  \n  .skin {\n    position: relative;\n    background: rgb(255, 230, 0);\n    height: 100vh;\n  }\n  \n  .nose {\n    position: absolute;\n    border-radius: 80px 0 0;\n    width: 10px;\n    height: 10px;\n    background: black;\n    left: 50%;\n    top: 200px;\n    transform: rotate(45deg);\n    margin-left: -5px;\n  }\n  \n  .eye {\n    position: absolute;\n    width: 60px;\n    height: 60px;\n    background: #2e2e2e;\n    border: 3px solid black;\n    left: 50%;\n    top: 160px;\n    margin-left: -30px;\n  }\n  \n  .eye.left {\n    transform: translateX(-100px);\n    border-radius: 50%;\n  }\n  \n  .eye.right {\n    transform: translateX(100px);\n    border-radius: 50%;\n  }\n  \n  .eye::before {\n    content: \"\";\n    display: block;\n    width: 26px;\n    height: 26px;\n    background: #fff;\n    border-radius: 50%;\n    position: relative;\n    left: 8px;\n    top: 2px;\n    border: 3px solid black;\n    animation: eye 5s infinite linear;\n  }\n  \n  .mouth {\n    width: 200px;\n    height: 200px;\n    left: 50%;\n    margin-left: -100px;\n    position: absolute;\n    top: 240px;\n    overflow: hidden;\n  }\n  \n  .mouth .lip .left {\n    position: absolute;\n    width: 100px;\n    height: 250px;\n    border: 3px solid black;\n    left: 50%;\n    margin-left: -60px;\n    bottom: 132px;\n    border-radius: 100px/200px;\n    transform: rotateZ(45deg);\n    background: rgb(255, 230, 0);\n    z-index: 2;\n  }\n  \n  .mouth .lip .right {\n    position: absolute;\n    width: 100px;\n    height: 250px;\n    border: 3px solid black;\n    left: 50%;\n    bottom: 132px;\n    margin-left: -40px;\n    border-radius: 100px/200px;\n    transform: rotateZ(-45deg);\n    background: rgb(255, 230, 0);\n    z-index: 2;\n  }\n  \n  .tongue .tongue1 {\n    border: 3px solid black;\n    width: 150px;\n    height: 500px;\n    left: 25px;\n    bottom: 50px;\n    position: absolute;\n    background: rgb(155, 0, 10);\n    border-radius: 75px/250px;\n    z-index: 1;\n    overflow: hidden;\n    animation: tongue 5s infinite ease-in;\n  }\n  \n  .tongue .tongue1 .tongue2 {\n    width: 144px;\n    height: 300px;\n    position: absolute;\n    top: 375px;\n    border-radius: 145px/170px;\n    background: rgb(255, 72, 95);\n  }\n  \n  .face {\n    border: 3px solid black;\n    width: 66px;\n    height: 66px;\n    left: 50%;\n    background: #ff0000;\n    position: absolute;\n    margin-left: -33px;\n    top: 270px;\n  }\n  \n  .face.left {\n    transform: translateX(-150px);\n    border-radius: 50%;\n  }\n  \n  .face.right {\n    transform: translateX(150px);\n    border-radius: 50%;\n  }\n  \n  @keyframes wave {\n    0% {\n      transform: rotate(45deg);\n    }\n    33% {\n      transform: rotate(53deg);\n    }\n    66% {\n      transform: rotate(37deg);\n    }\n    100% {\n      transform: rotate(45deg);\n    }\n  }\n  \n  .nose:hover {\n    animation: wave 150ms infinite linear;\n  }\n  \n  @keyframes eye {\n    0% {\n      transform: translateX(0);\n    }\n    10% {\n      transform: translateX(5px);\n    }\n    20% {\n      transform: translateX(5px);\n    }\n    30% {\n      transform: translateX(5px);\n    }\n    40% {\n      transform: translateX(-5px);\n    }\n    50% {\n      transform: translateX(5px);\n    }\n    60% {\n      transform: translateY(20px);\n    }\n    70% {\n      transform: translateX(-5px);\n    }\n    80% {\n      transform: translateX(-2px);\n    }\n    100% {\n      transform: translateY(-2px);\n    }\n  }\n  \n  @keyframes tongue {\n    0%,\n    80% {\n      border-radius: 75px/250px;\n      bottom: 50px;\n    }\n    95% {\n      border-radius: 75px/250px;\n      bottom: 50px;\n    }\n    100% {\n      border-radius: 45px/250px;\n      bottom: 200px;\n    }\n  }\n  \n";
-var n = 1;
-demo.innerText = string.substr(0, n);
-demo2.innerHTML = string.substr(0, n);
-var id = setInterval(function () {
-  n += 1;
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
 
-  if (n > string.length) {
-    window.clearInterval(id);
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+
+  return '/';
+}
+
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"C:/Users/Lee/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+
+  newLink.onload = function () {
+    link.remove();
+  };
+
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+
+function reloadCSS() {
+  if (cssTimeout) {
     return;
   }
 
-  demo.innerText = string.substr(0, n);
-  demo2.innerHTML = string.substr(0, n);
-  demo.scrollTop = demo.scrollHeight;
-}, 0);
-},{}],"C:/Users/Lee/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+
+    cssTimeout = null;
+  }, 50);
+}
+
+module.exports = reloadCSS;
+},{"./bundle-url":"C:/Users/Lee/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/bundle-url.js"}],"C:/Users/Lee/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -348,5 +387,5 @@ function hmrAcceptRun(bundle, id) {
     return true;
   }
 }
-},{}]},{},["C:/Users/Lee/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js","main.js"], null)
-//# sourceMappingURL=/main.1f19ae8e.js.map
+},{}]},{},["C:/Users/Lee/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js"], null)
+//# sourceMappingURL=/index.js.map
