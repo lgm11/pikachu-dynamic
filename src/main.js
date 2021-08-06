@@ -237,27 +237,32 @@ const run = () => {
     demo2.innerHTML = string.substr(0,n)
     demo.scrollTop = demo.scrollHeight
 }
-let id = setInterval(()=>{
-    run()
-},time)
+const play = () => {
+    return setInterval(run,time)
+}
+const pause = () => {
+    window.clearInterval(id)
+}
+let id = play()
 
 btnPause.onclick = () => {
-    window.clearInterval(id)
+    pause()
 }
 btnPlay.onclick = () => {
-    id = setInterval(run,time)
+    id = play()
 }
 btnSlow.onclick = () => {
-    window.clearInterval(id)
+    pause()
     time = 300
-    id = setInterval(run,time)
+    id = play()
 }
 btnNormal.onclick = () => {
-    window.clearInterval(id)
-    id = setInterval(run,time)
+    pause()
+    time = 100
+    id = play()
 }
 btnFast.onclick = () => {
-    window.clearInterval(id)
+    pause()
     time = 0
-    id = setInterval(run,time)
+    id = play()
 }

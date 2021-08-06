@@ -148,33 +148,40 @@ var run = function run() {
   demo.scrollTop = demo.scrollHeight;
 };
 
-var id = setInterval(function () {
-  run();
-}, time);
+var play = function play() {
+  return setInterval(run, time);
+};
+
+var pause = function pause() {
+  window.clearInterval(id);
+};
+
+var id = play();
 
 btnPause.onclick = function () {
-  window.clearInterval(id);
+  pause();
 };
 
 btnPlay.onclick = function () {
-  id = setInterval(run, time);
+  id = play();
 };
 
 btnSlow.onclick = function () {
-  window.clearInterval(id);
+  pause();
   time = 300;
-  id = setInterval(run, time);
+  id = play();
 };
 
 btnNormal.onclick = function () {
-  window.clearInterval(id);
-  id = setInterval(run, time);
+  pause();
+  time = 100;
+  id = play();
 };
 
 btnFast.onclick = function () {
-  window.clearInterval(id);
+  pause();
   time = 0;
-  id = setInterval(run, time);
+  id = play();
 };
 },{}],"C:/Users/Lee/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
