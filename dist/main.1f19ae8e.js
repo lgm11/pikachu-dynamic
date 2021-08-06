@@ -133,7 +133,9 @@ var string = "\n* {\n    box-sizing: border-box;\n  }\n  *::after,\n  *::before 
 var n = 1;
 demo.innerText = string.substr(0, n);
 demo2.innerHTML = string.substr(0, n);
-var id = setInterval(function () {
+var time = 100;
+
+var run = function run() {
   n += 1;
 
   if (n > string.length) {
@@ -144,7 +146,44 @@ var id = setInterval(function () {
   demo.innerText = string.substr(0, n);
   demo2.innerHTML = string.substr(0, n);
   demo.scrollTop = demo.scrollHeight;
-}, 0);
+};
+
+var id = setInterval(function () {
+  run();
+}, time);
+
+btnPause.onclick = function () {
+  window.clearInterval(id);
+};
+
+btnPlay.onclick = function () {
+  id = setInterval(function () {
+    run();
+  }, time);
+};
+
+btnSlow.onclick = function () {
+  window.clearInterval(id);
+  time = 300;
+  id = setInterval(function () {
+    run();
+  }, time);
+};
+
+btnNormal.onclick = function () {
+  window.clearInterval(id);
+  id = setInterval(function () {
+    run();
+  }, time);
+};
+
+btnFast.onclick = function () {
+  window.clearInterval(id);
+  time = 0;
+  id = setInterval(function () {
+    run();
+  }, time);
+};
 },{}],"C:/Users/Lee/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
