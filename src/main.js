@@ -245,27 +245,19 @@ btnPause.onclick = () => {
     window.clearInterval(id)
 }
 btnPlay.onclick = () => {
-    id = setInterval(()=>{
-        run()
-    },time)
+    id = setInterval(run,time)
 }
 btnSlow.onclick = () => {
     window.clearInterval(id)
     time = 300
-    id = setInterval(()=>{
-        run()
-    },time)
+    id = setInterval(run,time)
 }
 btnNormal.onclick = () => {
     window.clearInterval(id)
-    id = setInterval(()=>{
-        run()
-    },time)
+    id = setInterval(run,time)
 }
 btnFast.onclick = () => {
     window.clearInterval(id)
     time = 0
-    id = setInterval(()=>{
-        run()
-    },time)
+    id = setInterval(run,time)
 }

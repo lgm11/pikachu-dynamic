@@ -157,32 +157,24 @@ btnPause.onclick = function () {
 };
 
 btnPlay.onclick = function () {
-  id = setInterval(function () {
-    run();
-  }, time);
+  id = setInterval(run, time);
 };
 
 btnSlow.onclick = function () {
   window.clearInterval(id);
   time = 300;
-  id = setInterval(function () {
-    run();
-  }, time);
+  id = setInterval(run, time);
 };
 
 btnNormal.onclick = function () {
   window.clearInterval(id);
-  id = setInterval(function () {
-    run();
-  }, time);
+  id = setInterval(run, time);
 };
 
 btnFast.onclick = function () {
   window.clearInterval(id);
   time = 0;
-  id = setInterval(function () {
-    run();
-  }, time);
+  id = setInterval(run, time);
 };
 },{}],"C:/Users/Lee/AppData/Local/Yarn/Data/global/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
